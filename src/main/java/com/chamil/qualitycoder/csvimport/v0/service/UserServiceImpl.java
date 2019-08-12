@@ -1,7 +1,7 @@
-package com.chamil.qualitycode.csvimport.v0.service;
+package com.chamil.qualitycoder.csvimport.v0.service;
 
-import com.chamil.qualitycode.csvimport.v0.repository.User;
-import com.chamil.qualitycode.csvimport.v0.repository.UserRepository;
+import com.chamil.qualitycoder.csvimport.v0.repository.User;
+import com.chamil.qualitycoder.csvimport.v0.repository.UserRepository;
 import com.opencsv.CSVReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

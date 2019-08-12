@@ -1,6 +1,6 @@
-package com.chamil.qualitycode.csvimport.v0.controller;
+package com.chamil.qualitycoder.csvimport.v0.controller;
 
-import com.chamil.qualitycode.csvimport.v0.service.UserService;
+import com.chamil.qualitycoder.csvimport.v0.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.chamil.qualitycode.csvimport.v0.repository;
+package com.chamil.qualitycoder.csvimport.v0.repository;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

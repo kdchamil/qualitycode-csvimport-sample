@@ -1,4 +1,4 @@
-package com.chamil.qualitycode.csvimport;
+package com.chamil.qualitycoder.csvimport;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

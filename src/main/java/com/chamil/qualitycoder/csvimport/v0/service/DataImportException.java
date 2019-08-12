@@ -1,4 +1,4 @@
-package com.chamil.qualitycode.csvimport.v0.service;
+package com.chamil.qualitycoder.csvimport.v0.service;
 
 import java.io.IOException;
 
