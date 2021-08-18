@@ -14,7 +14,9 @@ public class User {
     private String address;
     private int age;
 
-    public User(){}
+    public User(){
+//        This constructor is intentionally empty. Nothing special is needed here.
+    }
 
     public User(String username, String address, int age){
         this.username = username;

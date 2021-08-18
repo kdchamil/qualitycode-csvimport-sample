@@ -13,10 +13,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class UserServiceImpl implements UserService {
 
+    public static final int EXPECTED_CSV_RECORD_LENGTH = 3;
+    public static final int MAX_NAME_LENGTH = 50;
+    public static final int MIN_AGE = 18;
     private final UserRepository userRepository;
 
     @Autowired
@@ -26,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void importUsers(MultipartFile file) {
-        Map<Integer, List<String>> errors = new HashMap<>();
+        Map<Integer, List<String>> errors = new ConcurrentHashMap<>();
 
         try {
             CSVReader reader = new CSVReader(new InputStreamReader(file.getInputStream()));
@@ -50,18 +54,18 @@ public class UserServiceImpl implements UserService {
 
         List<String> list = new ArrayList<>();
 
-        if (values.length != 3) {
-            list.add("The expected length is '" + 3 + "'. found " + values.length);
-        } else if (values[0].length() > 50 || values[0].length() == 0) {
-            list.add("Invalid name length " + values[0].length() + ". Should not exceed 50.");
+        if (values.length != EXPECTED_CSV_RECORD_LENGTH) {
+            list.add("The expected length is '" + EXPECTED_CSV_RECORD_LENGTH + "'. found " + values.length);
+        } else if (values[0].length() > MAX_NAME_LENGTH || values[0].length() == 0) {
+            list.add("Invalid name length " + values[0].length() + ". Should not exceed " + MAX_NAME_LENGTH +".");
         }
 
         int age;
 
         try {
             age = Integer.parseInt(values[2]);
-            if (age < 18) {
-                list.add("Age must be 18 or more. Minimum expected age is 18");
+            if (age < MIN_AGE) {
+                list.add("Age must be 18 or more. Minimum expected age is " + MIN_AGE);
             }
         } catch (NumberFormatException e) {
             list.add("Age must be a numeric value.");

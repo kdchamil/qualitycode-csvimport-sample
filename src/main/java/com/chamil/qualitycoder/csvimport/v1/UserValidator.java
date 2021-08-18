@@ -9,17 +9,19 @@ import java.util.List;
 @Component
 public class UserValidator implements Validator {
 
+    public static final int EXPECTED_COLUMN_COUNT = 3;
+
     @Override
     public List<String> validate(Record r) {
         List<String> errors = new ArrayList<>();
 
-        if(r.size() != 3){
-            errors.add("Expected 3 columns, found = " + r.size());
-        }else {
+        if (r.size() != EXPECTED_COLUMN_COUNT) {
+            errors.add("Expected " + EXPECTED_COLUMN_COUNT + " columns, found = " + r.size());
+        } else {
             if (r.get(0).length() == 0) {
                 errors.add("Name cannot be empty.");
             }
-            if(!NumberUtils.isDigits(r.get(2))){
+            if (!NumberUtils.isDigits(r.get(2))) {
                 errors.add("Age must be a number.");
             }
         }

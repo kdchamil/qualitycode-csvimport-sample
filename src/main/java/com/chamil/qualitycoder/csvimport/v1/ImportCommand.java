@@ -3,14 +3,15 @@ package com.chamil.qualitycoder.csvimport.v1;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ImportCommand<T> implements Command<T> {
 
 
-    private Validator validator;
-    private Store<T> store;
-    private DataSource dataSource;
-    private Mapper<T> mapper;
+    private final Validator validator;
+    private final Store<T> store;
+    private final DataSource dataSource;
+    private final Mapper<T> mapper;
 
     public ImportCommand(Validator validator, Store<T> store, DataSource dataSource, Mapper<T> mapper) {
         this.validator = validator;
@@ -21,7 +22,7 @@ public class ImportCommand<T> implements Command<T> {
 
     @Override
     public void execute() {
-        Map<Integer, List<String>> errorList = new HashMap<>();
+        Map<Integer, List<String>> errorList = new ConcurrentHashMap<>();
 
         //for each record in datasource
         for(Record r : dataSource) {
